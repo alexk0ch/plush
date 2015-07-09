@@ -1,0 +1,13 @@
+.left-box {
+	box-sizing: border-box;
+	width: 30%;
+	@include clearfix;
+	float: left;
+	padding: 0 $high;
+	margin-top: $high;
+	text-align: left;
+
+	@include breakpoint($pre-medium-break) {
+		display: none;
+	}
+}

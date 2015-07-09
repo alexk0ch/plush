@@ -1,0 +1,53 @@
+.likes-block {
+	background: $font-header;
+	margin-top: $high;
+	padding: 10px 15px;
+	border-radius: $button-rad;
+	margin-bottom: 40px;
+}
+
+.likes-block__heading {
+	font-size: 15px;
+	font-weight: bold;
+	float: left;
+	margin-right: 10px;
+}
+
+.likes-block__change-date {
+	float: left;
+	background: none;
+	border: none;
+	font-size: 12px;
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.likes-block__change-date--active {
+	@extend .likes-block__change-date;
+	border: 1px solid $background;
+}
+
+.likes-block__users-item {
+	@include clearfix;
+	margin-bottom: 5px;
+	img {
+		float: left;
+		border-radius: 5px;
+	}
+	a {
+		float: left;
+		padding: 10px 0;
+		margin-left: 15px;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	span {
+		float: right;
+		padding: 10px 0;
+		color: #c2c2c2;
+		margin-right: 20px;
+	}
+}

@@ -1,0 +1,21 @@
+.s-sidebar {
+	background: $font-header;
+	margin-top: $high;
+	padding: 10px 15px;
+	border-radius: $button-rad;
+}
+
+.s-sidebar__heading {
+	padding: 10px 0;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.s-sidevar__categories-item {
+	padding: 10px 0;
+	font-size: 13px;
+	
+	& a:hover {
+		text-decoration: underline;
+	}
+}

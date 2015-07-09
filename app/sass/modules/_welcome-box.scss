@@ -1,0 +1,14 @@
+.welcome-box {
+	padding: 10px 15px;
+	background: $font-header;
+	border-radius: $button-rad;
+}
+
+.welcome-box__heading {
+	font-weight: 600;
+	font-size: 17px;
+}
+
+.welcome-box__text {
+	margin: 15px 0;
+}

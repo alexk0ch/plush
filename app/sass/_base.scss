@@ -1,1 +1,63 @@
 // include base styling;
+body {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+	font-family: helvetica, arial, sans-serif;
+	font-size: $font-size;
+	color: $font-main;
+	background: lightblue;
+}
+
+h1,h2, h3, h4, h5, h6 {
+	font-size: 20px;
+	font-weight: 400;
+	color: $font-main;
+}
+
+a {
+	text-decoration: none;
+	color: $font-main;
+}
+
+div > a {
+	color: $font-header;
+	text-decoration: none;
+}
+
+textarea:focus, input:focus, input:active {
+    outline: 0;
+}
+
+.container {
+	@include container(80%);
+	@include clearfix;
+	@include breakpoint($medium-break) {
+		@include container(90%);
+	}
+}
+
+.box {
+	margin-top: 50px;
+}
+
+.btn {
+	display: inline-block;
+	color: $font-header;
+	padding: 7px 8px;
+	border-radius: 2px;
+	background-color: $main;
+	text-decoration: none;
+	font-size: $font-size - 2;
+	font-weight: 900;
+
+	@include transition (all .3s ease-in-out);
+
+	&:hover {
+		background: darken($main, 10%);
+	}
+}
+
+.welcome-box__btn {
+	@extend .btn;
+}

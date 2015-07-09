@@ -1,18 +1,26 @@
 
 // Import bourbon styles
 
-@import 'bourbon/_bourbon.scss';
+@import 'bourbon/bourbon';
 @import 'susy';
 @import 'breakpoint';
 
-
 // Import user styling
 
-@import '_variables';
-@import '_mixins';
-@import '_base';
-@import '_layouts';
+@import 'variables';
+@import 'mixins';
+@import 'base';
+@import 'layouts';
 
 // Import your modules here
 
-@import 'modules/_modules';
+@import 'modules/header';
+@import 'modules/left-box';
+@import 'modules/right-box';
+@import 'modules/welcome-box';
+@import 'modules/f-sidebar';
+@import 'modules/s-sidebar';
+@import 'modules/likes-block';
+
+
+

@@ -1,14 +1,15 @@
-var gulp = require('gulp');
-var compass = require('gulp-compass');
-var uglify = require('gulp-uglify');
-var jshint = require('gulp-jshint');
-var prefix = require('gulp-autoprefixer');
-var cssmin = require('gulp-csso');
-var sass = require('gulp-ruby-sass');
-var htmlmin = require('gulp-minify-html');
-var imagemin = require('gulp-imagemin');
+var gulp        = require('gulp');
+var uglify      = require('gulp-uglify');
+var jshint      = require('gulp-jshint');
+var prefix      = require('gulp-autoprefixer');
+var cssmin      = require('gulp-csso');
+var sass        = require('gulp-ruby-sass');
+var htmlmin     = require('gulp-minify-html');
+var imagemin    = require('gulp-imagemin');
 var browserSync = require('browser-sync');
-var stylish = require('jshint-stylish');
+var stylish     = require('jshint-stylish');
+var sourcemaps  = require('gulp-sourcemaps');
+var scsslint    = require('gulp-scss-lint');
 
 
 // Set variables
@@ -27,33 +28,13 @@ if (env === 'development') {
     sassStyle = 'compressed';
 }
 
-// Set specific tasks
-
-// Compile compass and sass
-
-// If use compass use this task to compile Sass/Compass
-
-gulp.task('compass', function() {
-    return gulp.src('app/sass/**/*.scss')
-        .pipe(compass({
-            sass: 'app/sass/',
-            css: 'app/css',
-            style: 'expanded'
-        }))
-        .pipe(prefix('last 2 version'))
-        .pipe(gulp.dest('app/css'));
-});
-
-// If you don't use Compass ,
-// use this task to compile sass (more fast then compass)
-
+// Compile compass and sass  
 gulp.task('sass', function() {
-    gulp.src('app/sass/**/*.scss')
-        .pipe(sass({
-            style: 'expanded',
-	        require: ['susy','breakpoint']
-
-        }))
+    return sass('./app/sass/', {require: ['susy', 'breakpoint']})
+        .on('error', function (err) {
+            console.error('Error!', err.message);
+        })
+        .pipe(prefix('last 2 version'))
         .pipe(gulp.dest('app/css/'));
 });
 
@@ -74,6 +55,12 @@ gulp.task('uglify', function() {
     return gulp.src('app/js/**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'));
+});
+
+// Lint scss
+gulp.task('scss-lint', function() {
+  gulp.src(['app/sass/modules/*.scss', 'app/sass/*.scss'])
+    .pipe(scsslint());
 });
 
 // hinting and linting js files
@@ -98,19 +85,18 @@ gulp.task('htmlmin', function() {
         .pipe(gulp.dest('dist/'));
 });
 
-
 //init browser sync via live reloads
 gulp.task('browser', function() {
     browserSync.init(['app/css/**/*.css', 'app/*.html', 'app/js/**/*.js'], {
         server: {
-            baseDir: outputDir
+            baseDir: "app"
         }
     });
 });
 
 // watch file changes
 gulp.task('watch', function() {
-    gulp.watch('app/sass/*.scss', ['sass']);
+    gulp.watch('app/sass/**/*.scss', ['sass', 'scss-lint']);
     gulp.watch('app/js/**/*.js', ['js']);
 
 });

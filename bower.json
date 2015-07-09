@@ -1,0 +1,25 @@
+{
+  "name": "plush-template",
+  "version": "0.0.0",
+  "homepage": "https://github.com/drKraken/dev-workflow",
+  "authors": [
+    "drkraken <kuchuklehjs@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "susy": "~2.2.5",
+    "breakpoint": "~4.6.4",
+    "normalize.css": "~3.0.3",
+    "reset-css": "~2.0.20110126"
+  },
+  "devDependencies": {
+    "handlebars": "~3.0.3"
+  }
+}
