@@ -1,9 +1,10 @@
 .likes-block {
-	background: $font-header;
-	margin-top: $high;
+	background: $font-header-color;
+	margin-top: $high-main;
 	padding: 10px 15px;
-	border-radius: $button-rad;
+	border-radius: $button-radius;
 	margin-bottom: 40px;
+	@include clearfix;
 }
 
 .likes-block__heading {
@@ -26,7 +27,7 @@
 
 .likes-block__change-date--active {
 	@extend .likes-block__change-date;
-	border: 1px solid $background;
+	border: 1px solid $background-color-main;
 }
 
 .likes-block__users-item {

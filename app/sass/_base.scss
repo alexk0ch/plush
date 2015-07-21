@@ -1,27 +1,33 @@
 // include base styling;
+*, *:after, *:before {
+	box-sizing: border-box;
+	outline: 0;
+}
+
 body {
 	width: 100%;
 	margin: 0 auto;
+	min-width: 655px;
 	padding: 0;
 	font-family: helvetica, arial, sans-serif;
-	font-size: $font-size;
-	color: $font-main;
-	background: lightblue;
+	font-size: $font-size-main;
+	color: $font-color-main;
+	background: #fff;
 }
 
 h1,h2, h3, h4, h5, h6 {
 	font-size: 20px;
 	font-weight: 400;
-	color: $font-main;
+	color: $font-color-main;
 }
 
 a {
 	text-decoration: none;
-	color: $font-main;
+	color: $font-color-main;
 }
 
 div > a {
-	color: $font-header;
+	color: $font-header-color;
 	text-decoration: none;
 }
 
@@ -32,7 +38,7 @@ textarea:focus, input:focus, input:active {
 .container {
 	@include container(80%);
 	@include clearfix;
-	@include breakpoint($medium-break) {
+	@include breakpoint($medium-breakpoint) {
 		@include container(90%);
 	}
 }
@@ -43,21 +49,34 @@ textarea:focus, input:focus, input:active {
 
 .btn {
 	display: inline-block;
-	color: $font-header;
+	color: $font-header-color;
 	padding: 7px 8px;
 	border-radius: 2px;
-	background-color: $main;
+	background-color: $palette-color-main;
 	text-decoration: none;
-	font-size: $font-size - 2;
+	font-size: $font-size-main - 2;
 	font-weight: 900;
 
-	@include transition (all .3s ease-in-out);
+	@include transition (background .3s ease-in-out);
 
 	&:hover {
-		background: darken($main, 10%);
+		background: darken($palette-color-main, 10%);
 	}
 }
 
 .welcome-box__btn {
 	@extend .btn;
+}
+
+// clearfix hack
+.clearfix {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
 }

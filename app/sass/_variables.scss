@@ -1,12 +1,12 @@
 // main variables
-$main: #ca3c3c;;
-$font-header: #fff;
-$background: #eef1f2;
-$font-main: #000;
-$font-size: 15px;
+$palette-color-main: #ca3c3c;;
+$font-header-color: #fff;
+$background-color-main: #eef1f2;
+$font-color-main: #000;
+$font-size-main: 15px;
 $search-box-width: 200px;
-$button-rad: 4px;
-$high: 20px;
+$button-radius: 4px;
+$high-main: 20px;
 
-$medium-break: max-width 1137px;
-$pre-medium-break: max-width 926px;
+$medium-breakpoint: max-width 1137px;
+$small-breakpoint: max-width 926px;

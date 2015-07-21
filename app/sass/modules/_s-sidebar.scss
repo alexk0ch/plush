@@ -1,18 +1,18 @@
 .s-sidebar {
-	background: $font-header;
-	margin-top: $high;
+	background: $font-header-color;
+	margin-top: $high-main;
 	padding: 10px 15px;
-	border-radius: $button-rad;
+	border-radius: $button-radius;
 }
 
 .s-sidebar__heading {
-	padding: 10px 0;
+	padding: 9px 0;
 	font-size: 15px;
 	font-weight: bold;
 }
 
 .s-sidevar__categories-item {
-	padding: 10px 0;
+	padding: 8px 0;
 	font-size: 13px;
 	
 	& a:hover {

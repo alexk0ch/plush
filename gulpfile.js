@@ -10,6 +10,7 @@ var browserSync = require('browser-sync');
 var stylish     = require('jshint-stylish');
 var sourcemaps  = require('gulp-sourcemaps');
 var scsslint    = require('gulp-scss-lint');
+var uncss       = require('gulp-uncss');
 
 
 // Set variables
@@ -38,6 +39,15 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('app/css/'));
 });
 
+// delete unused css
+gulp.task('uncss', function () {
+    return gulp.src('app/css/*.css')
+        .pipe(uncss({
+            html: ['app/*.html']
+        }))
+        .pipe(gulp.dest('app/css/uncss'))
+});
+
 //move image folder in build folder
 gulp.task('move', function() {
     return gulp.src('app/images/**/*.*')
@@ -52,7 +62,7 @@ gulp.task('move', function() {
 
 // minify js files
 gulp.task('uglify', function() {
-    return gulp.src('app/js/**/*.js')
+    return gulp.src('app/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'));
 });
@@ -65,15 +75,14 @@ gulp.task('scss-lint', function() {
 
 // hinting and linting js files
 gulp.task('js', function() {
-    return gulp.src('app/js/**/*.js')
+    return gulp.src('app/js/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter(stylish));
-
 });
 
 //minify css files
 gulp.task('cssmin', function() {
-    return gulp.src('app/css/**/*.css')
+    return gulp.src('app/css/*.css')
         .pipe(cssmin())
         .pipe(gulp.dest('dist/css'));
 });
@@ -87,7 +96,13 @@ gulp.task('htmlmin', function() {
 
 //init browser sync via live reloads
 gulp.task('browser', function() {
-    browserSync.init(['app/css/**/*.css', 'app/*.html', 'app/js/**/*.js'], {
+    var files = [
+        'app/css/**/*.css',
+        'app/*.html',
+        'app/js/**/*.js'
+    ];
+
+    browserSync.init(files, {
         server: {
             baseDir: "app"
         }
